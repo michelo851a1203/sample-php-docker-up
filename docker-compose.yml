@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  web:
+    image: nginx:latest
+    container_name: test_nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./src:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+  php:
+    image: php:fpm
+    container_name: test_php
+    volumes:
+      - ./src:/var/www/html
